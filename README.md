@@ -1,35 +1,26 @@
-# ESP8266 NonOS Application sample
+# Ví dụ về ESP8266 NonOS dùng FOTA và Smart Config
 
-## Usage (Check detail from Makefile)
+## Make file
 
-- OTA: Select from Makefile
-```
-OUTPUT_TYPE=combined/ota
-```
-- Base directory for the compiler. Needs a / at the end; if not set it'll use the tools that are in the PATH. Modify `XTENSA_TOOLS_ROOT`
-- FLASH Selection:
-```
-#SPI flash size, in K
-ESP_SPI_FLASH_SIZE_K=1024
-#0: QIO, 1: QOUT, 2: DIO, 3: DOUT
-ESP_FLASH_MODE=0
-#0: 40MHz, 1: 26MHz, 2: 20MHz, 15: 80MHz
-ESP_FLASH_FREQ_DIV=0
-```
-
-## Add module (check module folder user for sample)
+- Sử dụng makefile từ project mẫu [https://github.com/esp8266vn/esp8266-nonos-sdk-boilerplate](https://github.com/esp8266vn/esp8266-nonos-sdk-boilerplate)
+- Ta có thể lấy dự án về từ Github: 
 
 ```
-MODULES   = folderA folderB
+git clone https://github.com/esp8266vn/esp8266-nonos-sdk-boilerplate.git
 ```
 
-## Compile 
+## Để Compile project sử dụng lệnh 
 ```
 make  
 make flash 
 make clean
 ```
 
-### OTA Flow
+### Flow của OTA
 
 ![OTA Flow](./assets/fota-flow.png)
+
+### Tham khảo
+
+- Về FOTA tại [FOTA ESP8266.VN](https://esp8266.vn/nonos-sdk/fota/fota/)
+- Về Smart Config tại [Smart Config ESP8266.VN](https://esp8266.vn/nonos-sdk/smartconfig/smartconfig/)
