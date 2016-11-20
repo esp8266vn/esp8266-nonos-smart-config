@@ -18,7 +18,7 @@
 #include "wps.h"
 #include "sc.h"
 //#include "task.h"
-#include "fota.h"
+// #include "fota.h"
 
 #define KEY_NUM        1
 
@@ -26,8 +26,6 @@
 #define KEY_IO_NUM     0
 #define KEY_IO_FUNC    FUNC_GPIO0
 
-
-LOCAL fota_client client;
 
 LOCAL struct keys_param keys;
 LOCAL struct single_key_param *single_key;
@@ -38,7 +36,6 @@ short_press(void)
   INFO("[KEY] Short press, run smartconfig\r\n");
   led_blink(1, 1);
   sc_start();
-  //fota_connect(&client);
 }
 
 LOCAL void ICACHE_FLASH_ATTR
@@ -46,8 +43,6 @@ long_press(void)
 {
   INFO("[KEY] Long press, run wps\r\n");
   led_blink(5, 5);
-  //wps_start();
-  fota_connect(&client);
 }
 
 
@@ -91,14 +86,6 @@ void ICACHE_FLASH_ATTR app_init()
   key_init(&keys);
   led_init();
   led_blink(10, 10); //1 second on, 1 second off
-
-  fota_init_client(&client,
-                    "test.vidieukhien.net",
-                    80,
-                    0,
-                    "access_key",
-                    "chipid",
-                    "version");
 
   wifi_set_opmode_current(STATION_MODE);
 
